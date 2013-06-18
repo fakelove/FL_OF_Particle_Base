@@ -15,9 +15,8 @@ void ParticleEmitter::setup(ofPoint _origin, int maxSpeed, int maxSize, int maxA
     rotation = 0;
     origin = _origin;
     startColor = _startColor;
-    endColor = _endColor;    
-    for(int i=0; i<ParticleSize; i++) p[i] = new Particle(origin, maxSpeed, maxSize, maxAge, startColor, endColor);
-    
+    endColor = _endColor;
+    for(int i=0; i<ParticleSize; i++) p[i] = new Particle(origin, maxSpeed, maxSize, maxAge, startColor, endColor); 
 }
 
 void ParticleEmitter::update(float maxSpeed, int maxSize, int maxAge){
@@ -33,7 +32,7 @@ void ParticleEmitter::update(float maxSpeed, int maxSize, int maxAge){
 
 }
 
-void ParticleEmitter::draw(int x, int y){
+void ParticleEmitter::draw(int x, int y, pType _type){
     //ofPushMatrix();
    // ofTranslate(x, y);
    // ofRotate(rotation);
@@ -42,7 +41,7 @@ void ParticleEmitter::draw(int x, int y){
         ofSetColor(0);
         ofSetLineWidth(2);
         //ofLine(p[i]->pt, p[i-1]->pt);
-        p[i]->draw();
+        p[i]->draw(_type);
         /*if(ofDist(p[i]->getPoint().x, p[i]->getPoint().y, p[i-1]->getPoint().x, p[i-1]->getPoint().y )<200){
             ofLine(p[i]->getPoint(), p[i-1]->getPoint());
             ofLine(p[i-1]->getPoint(), p[i-2]->getPoint());
@@ -54,13 +53,16 @@ void ParticleEmitter::draw(int x, int y){
     //ofPopMatrix();
 }
 
-void ParticleEmitter::setForces(float _gravity, float _wind, float attraction){
+void ParticleEmitter::setForces(float _gravity, float _wind, float attraction, ofVec2f _turbSpeed, ofVec2f _turbAmt){
     
     //these could be in update...but that will start to get really complex...so lets break out the pieces into 
     for(int i=0; i<ParticleSize; i++) {
         p[i]->setWind(_wind); 
         p[i]->setGravity(_gravity);
-        p[i]->setAttraction(attraction);    }
+        p[i]->setAttraction(attraction);
+        p[i]->setTurbSpeed(_turbSpeed);
+        p[i]->setTurbAmt(_turbAmt);
+    }
 }
 
 void ParticleEmitter::setOrigin(ofPoint _origin){

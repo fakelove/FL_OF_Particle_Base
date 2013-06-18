@@ -20,21 +20,22 @@ void testApp::setup(){
     gui.add(maxParticleSpeed.setup("Speed", 10, 0,50));
     gui.add(maxParticleSize.setup("Size", 50, 0.0, 200.0));
     gui.add(maxParticleAge.setup("Age", 50, 0.0, 4000.0));
-    gui.add(MaxThresh.setup("MaxThresh", .3, -3, 3));
-    gui.add(MinThresh.setup("MinThresh", 0, -3, 3));
-    gui.add(exponent.setup("exponent", 1, -10, 10));
-    gui.add(ssaoRadius.setup("ssaoRadius", 30, -500, 500));
-    gui.add(bumpSlider.setup("bumpSlider", 30, -500, 500));
     gui.add(addBlend.setup("AddBlend", false));
-    gui.add(SSAOswitch.setup("SSAO", false));
     gui.add(AlphaBlendSwitch.setup("AlphaBlend", false));
     gui.add(pointLightSwitch.setup("PointLight", true));
     gui.add(cameraSwitch.setup("Camera", false));
+    gui.add(trailEnable.setup("Trail Enable", true));
     gui.add(gravity.setup("Gravity", 0, -30, 30));
     gui.add(wind.setup("Wind", 0, -30, 30));
     gui.add(attraction.setup("Attraction", 0, -30, 30));
+    gui.add(fadeAmt.setup("Fade Amt", 20, 0, 255));
+    gui.add(particleType.setup("Type", 2, 0, 4));
+    gui.add(turbAmtX.setup("Turb Amt X", 1, 0, 3));
+    gui.add(turbAmtY.setup("Turb Amt Y", 1, 0, 3));
+    gui.add(turbSpeedX.setup("Turb Speed X", 1, 0, 60));
+    gui.add(turbSpeedY.setup("Turb Speed Y", 1, 0, 60));
     
-    ParticleEmitter.setup(ofPoint(ofGetWidth()/2, ofGetHeight()/2), maxParticleSpeed, maxParticleSize, maxParticleAge, ofColor(80,120,255,255),ofColor(0,255,0,0));
+    emitter.setup(ofPoint(ofGetWidth()/2, ofGetHeight()/2), maxParticleSpeed, maxParticleSize, maxParticleAge, ofColor(80,120,255,255),ofColor(0,255,0,0));
 
 	material.setShininess( 120 );
     // the light highlight of the material //
@@ -44,8 +45,8 @@ void testApp::setup(){
     
     fbo1.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     ofFbo::Settings s;
-    s.width			= 600;
-    s.height			= 600;
+    s.width			= ofGetWidth();
+    s.height			= ofGetHeight();
     s.internalformat   = GL_RGBA;
     s.useDepth			= true;
     // and assigning this values to the fbo like this:
@@ -61,17 +62,6 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    //ofSetFrameRate(60);
-    
-    ssao.setup( ofGetWidth(), ofGetHeight(), GL_RGBA16F );
-	ssao.setRayReflection( true );
-	ssao.setRadius(ssaoRadius);
-	ssao.setExponent(exponent);
-	ssao.setMinThreshold(MinThresh);
-	ssao.setMaxThreshold(MaxThresh);
-    ssao.setWeight(1.0);
-    ssao.setNumSamples(8);
-    
     // radius of the sphere //
 	float radius		= 180.f;
 	ofPoint center;
@@ -83,10 +73,12 @@ void testApp::update(){
     //pointLight.setPosition(ofPoint(ofGetMouseX(), ofGetMouseY()));
     
     ofSetWindowTitle("FPS: " + ofToString(ofGetFrameRate()));
-    ParticleEmitter.update(maxParticleSpeed, maxParticleSize, maxParticleAge);
-    ParticleEmitter.setOrigin(ofPoint(ofGetMouseX(), ofGetMouseY()));
+    emitter.update(maxParticleSpeed, maxParticleSize, maxParticleAge);
+    emitter.setOrigin(ofPoint(ofGetMouseX(), ofGetMouseY()));
     
-    ParticleEmitter.setForces(gravity, wind, attraction);
+   // gravity = gravity + turbAmtX*ofSignedNoise(turbSpeedX*ofGetElapsedTimef()+6859);
+    //wind = wind +turbAmtY*ofSignedNoise(turbSpeedY*ofGetElapsedTimef()+8697);
+    emitter.setForces(gravity, wind, attraction, ofVec2f(turbAmtX, turbAmtY), ofVec2f(turbSpeedX, turbSpeedY));
     
     ofColor colorStart, colorEnd;
     
@@ -96,7 +88,7 @@ void testApp::update(){
     colorEnd.setHsb(255-colorCount, 255,255);
 
     ofRect(400, 400, 200, 200);
-    ParticleEmitter.setColors(ofColor(colorStart), ofColor(colorEnd));
+    emitter.setColors(ofColor(colorStart), ofColor(colorEnd));
 
 }
 
@@ -104,30 +96,18 @@ void testApp::update(){
 void testApp::draw(){
 
     
-    ofDisableBlendMode();
-    ofBackgroundGradient(ofColor::gray,ofColor(30,10,30), OF_GRADIENT_CIRCULAR);
 
-    glEnable(GL_DEPTH_TEST);
-    if(SSAOswitch) ssao.begin();
+    ofBackgroundGradient(ofColor::gray,ofColor(30,10,30), OF_GRADIENT_CIRCULAR);
     
-    //fbo1.begin(); //not working yet
-    
-    if( ofGetKeyPressed('c') ){
-		ofClear(0,0,0, 0);
-	}	
-    
-    int fadeAmnt = 1;
-	if(ofGetKeyPressed('1')){
-		fadeAmnt = 1;
-	}else if(ofGetKeyPressed('2')){
-		fadeAmnt = 5;
-	}else if(ofGetKeyPressed('3')){
-		fadeAmnt = 15;
-	}  
-    
-	ofFill();
-	ofSetColor(0,0,0, fadeAmnt);
-	//ofRect(0,0,ofGetWidth(),ofGetHeight());
+    if (trailEnable) {
+        glDisable(GL_DEPTH_TEST);
+        ofEnableAlphaBlending();
+        fbo1.begin(); 
+        ofFill();
+        ofSetColor(0,0,0, fadeAmt);
+        ofRect(0,0,ofGetWidth(),ofGetHeight());
+    }
+
 
     if(cameraSwitch) camera.begin();
     
@@ -138,7 +118,24 @@ void testApp::draw(){
 
     ofPushMatrix();
     if(addBlend) ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ParticleEmitter.draw(-ofGetWidth()/2,-ofGetHeight()/2);
+    
+    if (particleType== 0) {
+        emitter.draw(-ofGetWidth()/2,-ofGetHeight()/2, SPHERE);
+    }
+    else if (particleType== 1) {
+        emitter.draw(-ofGetWidth()/2,-ofGetHeight()/2, CUBE);
+    }
+    else if (particleType == 2) {
+        emitter.draw(-ofGetWidth()/2,-ofGetHeight()/2, LINES);
+    }
+    else if (particleType == 3) {
+        emitter.draw(-ofGetWidth()/2,-ofGetHeight()/2, TRIANGLE);
+    }
+    else if (particleType == 4) {
+        emitter.draw(-ofGetWidth()/2,-ofGetHeight()/2, MESHER);
+    }
+
+
     ofPopMatrix();
 
     if(pointLightSwitch) material.end();
@@ -147,15 +144,14 @@ void testApp::draw(){
     
     if(cameraSwitch) camera.end();
     
-    //fbo1.end();
-    
-    if(SSAOswitch) ssao.end();
-    if(SSAOswitch) ssao.draw();
+    if (trailEnable) {
+        fbo1.end();
+    }
     
     ofSetColor(255);
     
     ofPushMatrix();
-    //fbo1.draw(0, 0);
+    if(trailEnable) fbo1.draw(0, 0);
     ofPopMatrix();
     
     ofSetColor(255);
@@ -171,7 +167,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    
 }
 
 //--------------------------------------------------------------

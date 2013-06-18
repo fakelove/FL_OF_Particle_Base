@@ -15,8 +15,8 @@ Particle::Particle(ofPoint origin, int _maxSpeed, int _maxSize, int _maxAge, ofC
     endColor = _endColor;
     currentColor = _startColor;
     
-    pt.x=origin.x;
-    pt.y=origin.y;
+    pt = origin;
+    prevPt = origin;
     offset.x = ofRandomf(); //this just randomizes the initial position so the "thrust" doesnt go in the same direction
     offset.y = ofRandomf();
     offset.z = ofRandomf();
@@ -26,6 +26,8 @@ Particle::Particle(ofPoint origin, int _maxSpeed, int _maxSize, int _maxAge, ofC
     gravity.set(0, ofRandom(-1,1));
     gravity.set(0, gravity.y*(0.1*radius));
     wind.set(ofRandom(-1,1), 0);
+    turbAmt.set(ofRandom(0,15), ofRandom(0,15));
+    turbSpeed.set(5, 5);
     isDragging = false;
 
 	radius = ofRandom(3,_maxSize);
@@ -35,14 +37,17 @@ Particle::Particle(ofPoint origin, int _maxSpeed, int _maxSize, int _maxAge, ofC
     rotation.x = ofRandom(360);
     rotation.y = ofRandom(360);
     rotation.z = ofRandom(360);
+    randomSeed = ofRandom(500000);
     
-    attractionStrength = 5; //just set negative to make it repulsion..
-    
+    attractionStrength = 0; //just set negative to make it repulsion..
+
 }
 
 void Particle::update(int _particleID, ofPoint attractPoint, float _maxVelocity){
 
-    //could use particleID to further randomize the particles, 
+    //could use particleID to further randomize the particles,
+    
+    prevPt = pt; //save last point for lines mode
     
     age++; //age the particle
     
@@ -50,7 +55,10 @@ void Particle::update(int _particleID, ofPoint attractPoint, float _maxVelocity)
     //computeAttraction(attractPoint);
     
     applyForce(computeAttraction(attractPoint));
+    //wind.x = wind.x + turbAmt.y*ofSignedNoise(turbSpeed.y*ofGetElapsedTimef()+randomSeed);
     applyForce(wind);
+    //gravity.y = gravity.y +turbAmt.x*ofSignedNoise(turbSpeed.x*ofGetElapsedTimef()+randomSeed);
+    //cout<<1000*turbAmt.x*ofSignedNoise(turbSpeed.x*ofGetElapsedTimef()+randomSeed)<<endl;
     applyForce(gravity);
     applyForce(friction); //compute and accumulate all of our forces on acceleration
     
@@ -103,37 +111,69 @@ void Particle::update(int _particleID, ofPoint attractPoint, float _maxVelocity)
     
 }
 
-void Particle::draw(){
-
-    
-    //ofCircle( pt, radius);
-    
-    ofPushMatrix();
-    ofTranslate(pt);
-    //ofRotateX(rotation.x);
-    //ofRotateY(rotation.y);
-    //ofRotateZ(rotation.z);
-    ofFill();
+void Particle::draw(pType _type){
+    type = _type; //should this inherit from above on init or just take the command from draw?
     ofSetColor(currentColor);
-    //ofSetSphereResolution(15-15*((2*age)/maxAge));
-    ofSphere(0,0, radius-radius*(age/maxAge));
-    
-    //ofRect(0,0, radius-radius
-
-
-    //ofBox(0,0, radius-radius*(age/maxAge));
-    //ofBox(0,0, radius-radius*0.5*(age/maxAge)); //adding in extra boxes but gl depth test will need to be disabled in the main testapp!
-    //ofBox(0,0, radius-radius*0.7*(age/maxAge));
-    //ofRotateY(30*ofGetElapsedTimef());
-    //ofCircle( 0,0, radius);
-    //ofRotateX(30*ofGetElapsedTimef());
-    //ofCircle( 0,0, radius);
-    ofPopMatrix();
+    switch (type) {
+        case SPHERE:
+            ofPushMatrix();
+            ofTranslate(pt);
+            ofSphere(0,0, radius-radius*(age/maxAge));
+            ofPopMatrix();
+            break;
+        case TRIANGLE:
+            ofFill();
+            ofPushMatrix();
+            ofTranslate(pt);
+            ofRotateX(rotation.x);
+            ofRotateY(rotation.y);
+            ofRotateZ(rotation.z);
+            ofTriangle(0, 0, radius/2, radius, -radius/2, radius);
+            ofPopMatrix();
+            break;
+        case CUBE:
+            ofFill();
+            ofPushMatrix();
+            ofTranslate(pt);
+            ofRotateX(rotation.x);
+            ofRotateY(rotation.y);
+            ofRotateZ(rotation.z);
+            ofBox(0, 0, 0, radius);
+            ofPopMatrix();
+            break;
+        case LINES:
+            ofSetLineWidth(0.1);
+            ofLine(pt,prevPt);
+            break;
+        case MESHER:
+            ofPoint temp;
+            temp = pt;
+            meshPts.push_back(temp);
+            if (meshPts.size() > 15){
+                meshPts.erase(meshPts.begin());
+            }
+            
+            ofMesh mesh;
+            mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+            for(int i = 0; i < meshPts.size(); i++) {
+                //ofColor cur(255, 255, 0, ofMap(i, 0, 15, 0, 255));
+                mesh.addColor(currentColor);
+                mesh.addVertex(meshPts[i] - ofVec3f(1, 0, 0));
+                mesh.addColor(currentColor);
+                mesh.addVertex(meshPts[i] + ofVec3f(1, 0, 0));
+            }
+            mesh.draw();
+            break;
+        /*default:
+            glEnable(GL_POINT_SMOOTH);
+            glBegin(GL_POINTS);
+            glPointSize(5);
+            glVertex2f(0.0, 0.0);
+            glEnd();
+            break;*/
+    }
 }
 
-ofPoint Particle::getPoint(){
-    return pt;
-}
 void Particle::applyForce(ofVec3f force){
     acceleration = acceleration + (force/radius); //scale the force's influence depending on its size
 }
@@ -158,6 +198,10 @@ ofPoint Particle::computeAttraction(ofPoint attractor){
     float strength = (attractionStrength*mass * radius)/(magnitude * magnitude);
     force = force * strength;
     return force;
+}
+
+ofPoint Particle::getPoint(){
+    return pt;
 }
 
 float Particle::getMass(){
@@ -186,5 +230,13 @@ void Particle::setGravity(float _gravity){
 
 void Particle::setAttraction(float _attraction){
     attractionStrength = _attraction;
+}
+
+void Particle::setTurbAmt(ofVec2f _turbAmt){
+    turbAmt = _turbAmt;
+}
+
+void Particle::setTurbSpeed(ofVec2f _turbSpeed){
+    turbSpeed = _turbSpeed;
 }
 

@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "Particle.h"
 
-#define ParticleSize 300
+#define ParticleSize 1000
 
 class ParticleEmitter : public ofBaseApp{
 private:
@@ -21,12 +21,13 @@ private:
     ofPoint origin;
     float rotation;
     ofColor startColor, endColor;
+    pType type;
     
 public:
     void setup(ofPoint origin, int maxSpeed, int maxSize, int maxAge, ofColor _startColor, ofColor _endColor);
     void update(float maxSpeed, int maxSize, int maxAge);
-    void setForces(float _gravity, float _wind, float _attraction);
-    void draw(int x, int y);
+    void setForces(float _gravity, float _wind, float _attraction, ofVec2f _turbSpeed, ofVec2f _turbAmt);
+    void draw(int x, int y, pType _type);
     void setOrigin(ofPoint _origin);
     void setColors(ofColor _startColor, ofColor _endColor);
     

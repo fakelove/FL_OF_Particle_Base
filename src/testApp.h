@@ -24,11 +24,9 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         
-    ofxSSAO ssao;
-    void loadShader();
     ofEasyCam camera;
 
-    ParticleEmitter ParticleEmitter;
+
     
     ofImage scratch;
     
@@ -44,15 +42,17 @@ class testApp : public ofBaseApp{
     ofxIntSlider maxParticleAge;
 	ofxIntSlider maxParticleSize;
     ofxToggle addBlend;
-    ofxFloatSlider MaxThresh, MinThresh ;
     ofxFloatSlider gravity, wind, attraction;
-    ofxIntSlider exponent, ssaoRadius, bumpSlider;
-    ofxToggle SSAOswitch;
+    ofxIntSlider fadeAmt;
     ofxToggle pointLightSwitch;
     ofxToggle AlphaBlendSwitch;
     ofxToggle cameraSwitch;
+    ofxToggle trailEnable;
+    ofxIntSlider particleType;
+    ofxFloatSlider turbSpeedX, turbSpeedY, turbAmtX, turbAmtY;
     
     float colorCount;
     
+    ParticleEmitter emitter;
     
 };
