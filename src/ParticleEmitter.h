@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "Particle.h"
 
-#define ParticleSize 1000
+#define ParticleSize 200
 
 class ParticleEmitter : public ofBaseApp{
 private:

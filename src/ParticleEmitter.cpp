@@ -39,15 +39,28 @@ void ParticleEmitter::draw(int x, int y, pType _type){
     
     for(int i=5; i<ParticleSize; i++){
         ofSetColor(0);
-        ofSetLineWidth(2);
+        ofSetLineWidth(0.1);
         //ofLine(p[i]->pt, p[i-1]->pt);
         p[i]->draw(_type);
+        
+        
+        //PLEXUS STUFF
+        /*
+        //THIS IS SLOW..HOLY SHIT...NO MORE THAN 200 PARTICLES
+        for (int j=0; j<ParticleSize; j++) {
+            if (p[i]->getPoint().distanceSquared(p[j]->getPoint())<(50*50)) {
+                ofSetColor(ofMap(p[i]->getPoint().distanceSquared(p[j]->getPoint()), 0, 50*50, 255, 0));
+                ofLine(p[i]->getPoint(), p[j]->getPoint());
+            }
+        }*/
+        
         /*if(ofDist(p[i]->getPoint().x, p[i]->getPoint().y, p[i-1]->getPoint().x, p[i-1]->getPoint().y )<200){
             ofLine(p[i]->getPoint(), p[i-1]->getPoint());
             ofLine(p[i-1]->getPoint(), p[i-2]->getPoint());
             ofLine(p[i-2]->getPoint(), p[i-3]->getPoint());
             ofLine(p[i-3]->getPoint(), p[i-4]->getPoint());
         }*/
+        
         
     }
     //ofPopMatrix();

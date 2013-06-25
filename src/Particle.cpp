@@ -66,6 +66,7 @@ void Particle::update(int _particleID, ofPoint attractPoint, float _maxVelocity)
     velocity.limit(_maxVelocity); //make sure we don't go too fast...
     
     pt = pt + velocity; //increment position
+    //pt.z = pt.z + velocity.z;
     
     
     //Edge checking
@@ -142,7 +143,7 @@ void Particle::draw(pType _type){
             ofPopMatrix();
             break;
         case LINES:
-            ofSetLineWidth(0.1);
+            ofSetLineWidth(2);
             ofLine(pt,prevPt);
             break;
         case MESHER:
