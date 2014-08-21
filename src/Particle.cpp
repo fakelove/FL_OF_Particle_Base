@@ -119,7 +119,8 @@ void Particle::draw(pType _type){
         case SPHERE:
             ofPushMatrix();
             ofTranslate(pt);
-            ofSphere(0,0, radius-radius*(age/maxAge));
+            //ofSphere(0,0, radius-radius*(age/maxAge));
+            ofCircle(0,0, radius-radius*(age/maxAge));
             ofPopMatrix();
             break;
         case TRIANGLE:

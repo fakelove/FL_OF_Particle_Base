@@ -17,23 +17,39 @@ void testApp::setup(){
     //light.setPosition(200, 200, 200);
     
     gui.setup("Panel");
-    gui.add(maxParticleSpeed.setup("Speed", 10, 0,50));
-    gui.add(maxParticleSize.setup("Size", 50, 0.0, 200.0));
-    gui.add(maxParticleAge.setup("Age", 50, 0.0, 4000.0));
-    gui.add(addBlend.setup("AddBlend", false));
-    gui.add(AlphaBlendSwitch.setup("AlphaBlend", false));
-    gui.add(pointLightSwitch.setup("PointLight", true));
-    gui.add(cameraSwitch.setup("Camera", false));
-    gui.add(trailEnable.setup("Trail Enable", true));
-    gui.add(gravity.setup("Gravity", 0, -30, 30));
-    gui.add(wind.setup("Wind", 0, -30, 30));
-    gui.add(attraction.setup("Attraction", 0, -30, 30));
-    gui.add(fadeAmt.setup("Fade Amt", 20, 0, 255));
-    gui.add(particleType.setup("Type", 2, 0, 4));
-    gui.add(turbAmtX.setup("Turb Amt X", 1, 0, 3));
-    gui.add(turbAmtY.setup("Turb Amt Y", 1, 0, 3));
-    gui.add(turbSpeedX.setup("Turb Speed X", 1, 0, 60));
-    gui.add(turbSpeedY.setup("Turb Speed Y", 1, 0, 60));
+    maxParticleSpeed.set("Speed", 10, 0,50);
+    maxParticleSize.set("Size", 50, 0.0, 200.0);
+    maxParticleAge.set("Age", 50, 0.0, 4000.0);
+    addBlend.set("AddBlend", false);
+    AlphaBlendSwitch.set("AlphaBlend", false);
+    pointLightSwitch.set("PointLight", true);
+    cameraSwitch.set("Camera", false);
+    trailEnable.set("Trail Enable", true);
+    gravity.set("Gravity", 0, -30, 30);
+    wind.set("Wind", 0, -30, 30);
+    attraction.set("Attraction", 0, -30, 30);
+    particleType.set("Type", 2, 0, 4);
+    
+    gui.add(maxParticleSpeed);
+    gui.add(maxParticleSize);
+    gui.add(maxParticleAge);
+    gui.add(addBlend);
+    gui.add(AlphaBlendSwitch);
+    gui.add(pointLightSwitch);
+    gui.add(cameraSwitch);
+    gui.add(trailEnable);
+    gui.add(gravity);
+    gui.add(wind);
+    gui.add(attraction);
+    gui.add(fadeAmt);
+    gui.add(particleType);
+    gui.loadFromFile("settings.xml");
+    
+    
+//    gui.add(turbAmtX.setup("Turb Amt X", 1, 0, 3));
+//    gui.add(turbAmtY.setup("Turb Amt Y", 1, 0, 3));
+//    gui.add(turbSpeedX.setup("Turb Speed X", 1, 0, 60));
+//    gui.add(turbSpeedY.setup("Turb Speed Y", 1, 0, 60));
     
     emitter.setup(ofPoint(ofGetWidth()/2, ofGetHeight()/2), maxParticleSpeed, maxParticleSize, maxParticleAge, ofColor(80,120,255,255),ofColor(0,255,0,0));
 

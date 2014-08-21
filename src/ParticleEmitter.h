@@ -1,18 +1,9 @@
-//
-//  BallEmitter.h
-//  particleEngine1
-//
-//  Created by Mary Scahill on 2/28/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
-//
-
-#ifndef particleEngine1_BallEmitter_h
-#define particleEngine1_BallEmitter_h
+#pragma once
 
 #include "ofMain.h"
 #include "Particle.h"
 
-#define ParticleSize 200
+#define ParticleSize 500
 
 class ParticleEmitter : public ofBaseApp{
 private:
@@ -35,4 +26,4 @@ public:
 };
 
 
-#endif
+

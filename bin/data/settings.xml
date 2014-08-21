@@ -1,0 +1,15 @@
+<Panel>
+	<Speed>27</Speed>
+	<Size>31</Size>
+	<Age>50</Age>
+	<AddBlend>1</AddBlend>
+	<AlphaBlend>0</AlphaBlend>
+	<PointLight>0</PointLight>
+	<Camera>0</Camera>
+	<Trail_Enable>0</Trail_Enable>
+	<Gravity>0</Gravity>
+	<Wind>0</Wind>
+	<Attraction>16.5</Attraction>
+	<UnknownName>0</UnknownName>
+	<Type>0</Type>
+</Panel>

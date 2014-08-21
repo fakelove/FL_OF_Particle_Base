@@ -4,7 +4,7 @@
 #include "Particle.h"
 #include "ParticleEmitter.h"
 #include "ofxGui.h"
-#include "ofxSSAO.h"
+
 
 
 class testApp : public ofBaseApp{
@@ -38,18 +38,18 @@ class testApp : public ofBaseApp{
     //float maxParticleSpeed, maxParticleAge, maxParticleSize;
     
     ofxPanel gui;
-    ofxIntSlider maxParticleSpeed;
-    ofxIntSlider maxParticleAge;
-	ofxIntSlider maxParticleSize;
-    ofxToggle addBlend;
-    ofxFloatSlider gravity, wind, attraction;
-    ofxIntSlider fadeAmt;
-    ofxToggle pointLightSwitch;
-    ofxToggle AlphaBlendSwitch;
-    ofxToggle cameraSwitch;
-    ofxToggle trailEnable;
-    ofxIntSlider particleType;
-    ofxFloatSlider turbSpeedX, turbSpeedY, turbAmtX, turbAmtY;
+    ofParameter<int> maxParticleSpeed;
+    ofParameter<int> maxParticleAge;
+	ofParameter<int> maxParticleSize;
+    ofParameter<bool> addBlend;
+    ofParameter<float> gravity, wind, attraction;
+    ofParameter<float> fadeAmt;
+    ofParameter<bool> pointLightSwitch;
+    ofParameter<bool> AlphaBlendSwitch;
+    ofParameter<bool> cameraSwitch;
+    ofParameter<bool> trailEnable;
+    ofParameter<int> particleType;
+    ofParameter<float> turbSpeedX, turbSpeedY, turbAmtX, turbAmtY;
     
     float colorCount;
     

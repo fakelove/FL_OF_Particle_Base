@@ -9,16 +9,18 @@
 /* Begin PBXBuildFile section */
 		1C9A41C416DFF08000CBD519 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C9A41C316DFF08000CBD519 /* Particle.cpp */; };
 		1C9A41D016E006F800CBD519 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C9A41CF16E006F800CBD519 /* ParticleEmitter.cpp */; };
-		501056FC16E12295009BE2E4 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501056F116E12295009BE2E4 /* ofxBaseGui.cpp */; };
-		501056FD16E12295009BE2E4 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501056F316E12295009BE2E4 /* ofxButton.cpp */; };
-		501056FE16E12295009BE2E4 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501056F616E12295009BE2E4 /* ofxPanel.cpp */; };
-		501056FF16E12295009BE2E4 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501056F816E12295009BE2E4 /* ofxSlider.cpp */; };
-		5010570016E12295009BE2E4 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501056FA16E12295009BE2E4 /* ofxToggle.cpp */; };
 		5010570F16E123C6009BE2E4 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5010570816E123C6009BE2E4 /* tinyxml.cpp */; };
 		5010571016E123C6009BE2E4 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5010570A16E123C6009BE2E4 /* tinyxmlerror.cpp */; };
 		5010571116E123C6009BE2E4 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5010570B16E123C6009BE2E4 /* tinyxmlparser.cpp */; };
 		5010571216E123C6009BE2E4 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5010570D16E123C6009BE2E4 /* ofxXmlSettings.cpp */; };
-		50D6619E16E25F630015577E /* ofxSSAO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50D6618F16E25F630015577E /* ofxSSAO.cpp */; };
+		5050AFFB19A58E2300A84F91 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFEA19A58E2300A84F91 /* ofxBaseGui.cpp */; };
+		5050AFFC19A58E2300A84F91 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFEC19A58E2300A84F91 /* ofxButton.cpp */; };
+		5050AFFD19A58E2300A84F91 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFEF19A58E2300A84F91 /* ofxGuiGroup.cpp */; };
+		5050AFFE19A58E2300A84F91 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFF119A58E2300A84F91 /* ofxLabel.cpp */; };
+		5050AFFF19A58E2300A84F91 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFF319A58E2300A84F91 /* ofxPanel.cpp */; };
+		5050B00019A58E2300A84F91 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFF519A58E2300A84F91 /* ofxSlider.cpp */; };
+		5050B00119A58E2300A84F91 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFF719A58E2300A84F91 /* ofxSliderGroup.cpp */; };
+		5050B00219A58E2300A84F91 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5050AFF919A58E2300A84F91 /* ofxToggle.cpp */; };
 		50D661B216E25F890015577E /* ssao_composite.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50D661AC16E25F890015577E /* ssao_composite.frag */; };
 		50D661B316E25F890015577E /* ssao_composite.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50D661AD16E25F890015577E /* ssao_composite.vert */; };
 		50D661B416E25F890015577E /* ssao_deferred.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50D661AE16E25F890015577E /* ssao_deferred.frag */; };
@@ -82,30 +84,29 @@
 		1C9A41C316DFF08000CBD519 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		1C9A41CF16E006F800CBD519 /* ParticleEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEmitter.cpp; sourceTree = "<group>"; };
 		1C9A41D116E0070900CBD519 /* ParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEmitter.h; sourceTree = "<group>"; };
-		501056EF16E12295009BE2E4 /* ofOscParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOscParameter.h; sourceTree = "<group>"; };
-		501056F016E12295009BE2E4 /* ofParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofParameter.h; sourceTree = "<group>"; };
-		501056F116E12295009BE2E4 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
-		501056F216E12295009BE2E4 /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
-		501056F316E12295009BE2E4 /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
-		501056F416E12295009BE2E4 /* ofxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxButton.h; sourceTree = "<group>"; };
-		501056F516E12295009BE2E4 /* ofxGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGui.h; sourceTree = "<group>"; };
-		501056F616E12295009BE2E4 /* ofxPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPanel.cpp; sourceTree = "<group>"; };
-		501056F716E12295009BE2E4 /* ofxPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
-		501056F816E12295009BE2E4 /* ofxSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlider.cpp; sourceTree = "<group>"; };
-		501056F916E12295009BE2E4 /* ofxSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSlider.h; sourceTree = "<group>"; };
-		501056FA16E12295009BE2E4 /* ofxToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
-		501056FB16E12295009BE2E4 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		5010570816E123C6009BE2E4 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		5010570916E123C6009BE2E4 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		5010570A16E123C6009BE2E4 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		5010570B16E123C6009BE2E4 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		5010570D16E123C6009BE2E4 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		5010570E16E123C6009BE2E4 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
-		50D6617716E25F630015577E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		50D6617816E25F630015577E /* example-spheres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "example-spheres.png"; sourceTree = "<group>"; };
-		50D6618D16E25F630015577E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		50D6618F16E25F630015577E /* ofxSSAO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSAO.cpp; sourceTree = "<group>"; };
-		50D6619016E25F630015577E /* ofxSSAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSAO.h; sourceTree = "<group>"; };
+		5050AFEA19A58E2300A84F91 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
+		5050AFEB19A58E2300A84F91 /* ofxBaseGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
+		5050AFEC19A58E2300A84F91 /* ofxButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
+		5050AFED19A58E2300A84F91 /* ofxButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxButton.h; sourceTree = "<group>"; };
+		5050AFEE19A58E2300A84F91 /* ofxGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGui.h; sourceTree = "<group>"; };
+		5050AFEF19A58E2300A84F91 /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGuiGroup.cpp; sourceTree = "<group>"; };
+		5050AFF019A58E2300A84F91 /* ofxGuiGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGuiGroup.h; sourceTree = "<group>"; };
+		5050AFF119A58E2300A84F91 /* ofxLabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLabel.cpp; sourceTree = "<group>"; };
+		5050AFF219A58E2300A84F91 /* ofxLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxLabel.h; sourceTree = "<group>"; };
+		5050AFF319A58E2300A84F91 /* ofxPanel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPanel.cpp; sourceTree = "<group>"; };
+		5050AFF419A58E2300A84F91 /* ofxPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
+		5050AFF519A58E2300A84F91 /* ofxSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlider.cpp; sourceTree = "<group>"; };
+		5050AFF619A58E2300A84F91 /* ofxSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSlider.h; sourceTree = "<group>"; };
+		5050AFF719A58E2300A84F91 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSliderGroup.cpp; sourceTree = "<group>"; };
+		5050AFF819A58E2300A84F91 /* ofxSliderGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
+		5050AFF919A58E2300A84F91 /* ofxToggle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
+		5050AFFA19A58E2300A84F91 /* ofxToggle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		50D661A816E25F890015577E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		50D661A916E25F890015577E /* of.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = of.png; sourceTree = "<group>"; };
 		50D661AA16E25F890015577E /* scratch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scratch.jpg; sourceTree = "<group>"; };
@@ -169,35 +170,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		501056ED16E12295009BE2E4 /* ofxGui */ = {
-			isa = PBXGroup;
-			children = (
-				501056EE16E12295009BE2E4 /* src */,
-			);
-			name = ofxGui;
-			path = ../../../addons/ofxGui;
-			sourceTree = "<group>";
-		};
-		501056EE16E12295009BE2E4 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				501056EF16E12295009BE2E4 /* ofOscParameter.h */,
-				501056F016E12295009BE2E4 /* ofParameter.h */,
-				501056F116E12295009BE2E4 /* ofxBaseGui.cpp */,
-				501056F216E12295009BE2E4 /* ofxBaseGui.h */,
-				501056F316E12295009BE2E4 /* ofxButton.cpp */,
-				501056F416E12295009BE2E4 /* ofxButton.h */,
-				501056F516E12295009BE2E4 /* ofxGui.h */,
-				501056F616E12295009BE2E4 /* ofxPanel.cpp */,
-				501056F716E12295009BE2E4 /* ofxPanel.h */,
-				501056F816E12295009BE2E4 /* ofxSlider.cpp */,
-				501056F916E12295009BE2E4 /* ofxSlider.h */,
-				501056FA16E12295009BE2E4 /* ofxToggle.cpp */,
-				501056FB16E12295009BE2E4 /* ofxToggle.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		5010570616E123C6009BE2E4 /* ofxXmlSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,25 +200,37 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		50D6617616E25F630015577E /* ofxSSAO */ = {
+		5050AFE819A58E2300A84F91 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
-				50D6617716E25F630015577E /* .gitignore */,
-				50D6617816E25F630015577E /* example-spheres.png */,
-				50D6618D16E25F630015577E /* README.md */,
-				50D6618E16E25F630015577E /* src */,
+				5050AFE919A58E2300A84F91 /* src */,
 			);
-			name = ofxSSAO;
-			path = ../../../addons/ofxSSAO;
+			name = ofxGui;
 			sourceTree = "<group>";
 		};
-		50D6618E16E25F630015577E /* src */ = {
+		5050AFE919A58E2300A84F91 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				50D6618F16E25F630015577E /* ofxSSAO.cpp */,
-				50D6619016E25F630015577E /* ofxSSAO.h */,
+				5050AFEA19A58E2300A84F91 /* ofxBaseGui.cpp */,
+				5050AFEB19A58E2300A84F91 /* ofxBaseGui.h */,
+				5050AFEC19A58E2300A84F91 /* ofxButton.cpp */,
+				5050AFED19A58E2300A84F91 /* ofxButton.h */,
+				5050AFEE19A58E2300A84F91 /* ofxGui.h */,
+				5050AFEF19A58E2300A84F91 /* ofxGuiGroup.cpp */,
+				5050AFF019A58E2300A84F91 /* ofxGuiGroup.h */,
+				5050AFF119A58E2300A84F91 /* ofxLabel.cpp */,
+				5050AFF219A58E2300A84F91 /* ofxLabel.h */,
+				5050AFF319A58E2300A84F91 /* ofxPanel.cpp */,
+				5050AFF419A58E2300A84F91 /* ofxPanel.h */,
+				5050AFF519A58E2300A84F91 /* ofxSlider.cpp */,
+				5050AFF619A58E2300A84F91 /* ofxSlider.h */,
+				5050AFF719A58E2300A84F91 /* ofxSliderGroup.cpp */,
+				5050AFF819A58E2300A84F91 /* ofxSliderGroup.h */,
+				5050AFF919A58E2300A84F91 /* ofxToggle.cpp */,
+				5050AFFA19A58E2300A84F91 /* ofxToggle.h */,
 			);
-			path = src;
+			name = src;
+			path = ../../../../../Dropbox/Backups/openFrameworks_0.8.1/addons/ofxGui/src;
 			sourceTree = "<group>";
 		};
 		50D661A716E25F890015577E /* data */ = {
@@ -277,9 +261,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				50D6617616E25F630015577E /* ofxSSAO */,
+				5050AFE819A58E2300A84F91 /* ofxGui */,
 				5010570616E123C6009BE2E4 /* ofxXmlSettings */,
-				501056ED16E12295009BE2E4 /* ofxGui */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -395,6 +378,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "particleEngine1" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -452,22 +437,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5050AFFE19A58E2300A84F91 /* ofxLabel.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				5050B00019A58E2300A84F91 /* ofxSlider.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				1C9A41C416DFF08000CBD519 /* Particle.cpp in Sources */,
 				1C9A41D016E006F800CBD519 /* ParticleEmitter.cpp in Sources */,
-				501056FC16E12295009BE2E4 /* ofxBaseGui.cpp in Sources */,
-				501056FD16E12295009BE2E4 /* ofxButton.cpp in Sources */,
-				501056FE16E12295009BE2E4 /* ofxPanel.cpp in Sources */,
-				501056FF16E12295009BE2E4 /* ofxSlider.cpp in Sources */,
-				5010570016E12295009BE2E4 /* ofxToggle.cpp in Sources */,
 				5010570F16E123C6009BE2E4 /* tinyxml.cpp in Sources */,
 				5010571016E123C6009BE2E4 /* tinyxmlerror.cpp in Sources */,
 				5010571116E123C6009BE2E4 /* tinyxmlparser.cpp in Sources */,
+				5050AFFC19A58E2300A84F91 /* ofxButton.cpp in Sources */,
+				5050AFFF19A58E2300A84F91 /* ofxPanel.cpp in Sources */,
+				5050B00219A58E2300A84F91 /* ofxToggle.cpp in Sources */,
+				5050AFFB19A58E2300A84F91 /* ofxBaseGui.cpp in Sources */,
 				5010571216E123C6009BE2E4 /* ofxXmlSettings.cpp in Sources */,
-				50D6619E16E25F630015577E /* ofxSSAO.cpp in Sources */,
+				5050AFFD19A58E2300A84F91 /* ofxGuiGroup.cpp in Sources */,
 				50D661B216E25F890015577E /* ssao_composite.frag in Sources */,
 				50D661B316E25F890015577E /* ssao_composite.vert in Sources */,
+				5050B00119A58E2300A84F91 /* ofxSliderGroup.cpp in Sources */,
 				50D661B416E25F890015577E /* ssao_deferred.frag in Sources */,
 				50D661B516E25F890015577E /* ssao_deferred.vert in Sources */,
 				50D661B616E25F890015577E /* ssao_render.frag in Sources */,
@@ -629,6 +616,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -716,6 +704,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
